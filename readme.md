@@ -25,4 +25,4 @@ By sending out the first five charachters of a SHA1 hash of your password. The A
 
 # Why would you want to use this?
 
-You should already be using a password generator to generate your passwords, even so your password can still be breached. This tool allows you to check if your password has been breached without actual sending your password.
+You should already be using a password generator to generate your passwords, even so your password can still be breached. This tool allows you to check if your password has been breached without actual sending your password to the service.
