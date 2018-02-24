@@ -21,7 +21,7 @@ Uses pwned passwords API to check if your password has been pwned - without send
 
 # How does it do this?
 
-By sending out the first five charachters of a SHA1 hash of your password. The API then returns a list of pwned password hashes that matched your hash prefix. This program then checks that list of similar hashes for a direct match.
+By sending out the first five characters of a SHA1 hash of your password. The API then returns a list of pwned password hashes that matched your hash prefix. This program then checks that list of similar hashes for a direct match.
 
 # Why would you want to use this?
 
