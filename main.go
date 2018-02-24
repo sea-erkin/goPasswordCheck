@@ -2,27 +2,24 @@ package main
 
 import (
 	"crypto/sha1"
-	"flag"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
 	"strconv"
 	"strings"
 )
 
 var (
-	passwordFlag = flag.String("p", "", "password to check")
-	print        = fmt.Println
+	print = fmt.Println
 )
 
 func main() {
 
-	checkFlags()
+	password := getPassword()
 
-	hash, hashPrefix := getHash()
+	hash, hashPrefix := getHash(password)
 	print("[Password Hash] " + hash)
 
 	pwnedHashes := getPwnedHashes(hashPrefix)
@@ -85,21 +82,25 @@ func getPwnedHashes(hashPrefix string) []PwnedHash {
 	return retval
 }
 
-func getHash() (string, string) {
+func getHash(password string) (string, string) {
 	h := sha1.New()
-	io.WriteString(h, *passwordFlag)
+	io.WriteString(h, password)
 	hash := strings.ToUpper(fmt.Sprintf("%x", h.Sum(nil)))
 	hashPrefix := hash[:5]
 
 	return hash, hashPrefix
 }
 
-func checkFlags() {
-	flag.Parse()
-	if *passwordFlag == "" {
-		flag.PrintDefaults()
-		os.Exit(1)
+func getPassword() string {
+	fmt.Print("Enter password: ")
+	var input string
+	fmt.Scanln(&input)
+
+	if input == "" {
+		log.Fatal("[ERROR] Invalid input entered")
 	}
+
+	return input
 }
 
 type PwnedHash struct {
