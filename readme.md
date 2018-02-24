@@ -4,16 +4,8 @@
 git clone https://github.com/sea-erkin/goPasswordCheck.git
 cd goPasswordCheck
 go build
-./goPasswordCheck -p password1
+./goPasswordCheck
 ```
-
-```
-./goPasswordCheck -h
-Usage of ./goPasswordCheck:
-  -p string
-     password to check
- ```
-
 
 # What does this thing do?
 
